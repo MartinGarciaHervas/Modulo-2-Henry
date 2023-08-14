@@ -179,6 +179,7 @@ function completeToDo(event) {
 
 // Acá debes insertar la llamada a 'displayToDos'
 displayToDos();
+console.log();
 
 // ---------------------------- NO CAMBIES NADA DE ACÁ PARA ABAJO ----------------------------- //
 if (typeof module !== "undefined") {
