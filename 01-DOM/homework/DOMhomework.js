@@ -9,7 +9,7 @@ let toDoItems = [];
 // Tu código acá:
 
 let nombre = document.getElementById("createdBy");
-nombre.innerHTML = "Aplicación creada por Martin"
+nombre.innerHTML += " " + "Martin"; // el innerHTML agrega lo q le decis dentro de los tags <span> Aplicacion creada por Martin </span> 
 
 // Crear una clase denominada 'ToDo' cuyo constructor debe recibir un único parámetro del tipo string
 // con el nombre 'description' que será justamente la descripción del ToDo.
@@ -62,20 +62,19 @@ ToDo.prototype.completeToDo = function(){
 function buildToDo(todo, index) {
   // Tu código acá:
   let toDoShell = document.createElement("div");
-  toDoShell.className = "toDoShell";
+  toDoShell.setAttribute("class", "toDoShell");
 
   let toDoText = document.createElement("span");
   toDoText.innerHTML = todo.description;
 
-
   let checkbox = document.createElement("input");
   checkbox.type = "checkbox";
-  checkbox.id = index;
+  checkbox.setAttribute("id", index);
   checkbox.addEventListener("click", completeToDo);
-  checkbox.className = "completeCheckbox"
+  checkbox.setAttribute("class", "completeCheckbox");
 
   if(todo.complete === true){
-    toDoText.className = "completeText";
+    toDoText.setAttribute("class", "completeText");
     checkbox.checked = true;
   }
   
@@ -108,10 +107,8 @@ function displayToDos() {
   // Tu código acá:
   let toDoContainer = document.getElementById("toDoContainer");
   toDoContainer.innerHTML = "";
-
-  let newList = buildToDos(toDoItems)
   
-  newList.forEach(element => {
+  buildToDos(toDoItems).forEach(element => {
     toDoContainer.appendChild(element);
   });
 }
