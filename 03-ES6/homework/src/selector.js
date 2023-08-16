@@ -9,16 +9,17 @@ var traverseDomAndCollectElements = function (matchFunc, startEl) {
   // usa matchFunc para identificar elementos que matchien
 
   // TU CÓDIGO AQUÍ
-  function traverse(startEl) {
-    if (matchFunc(startEl)) resultSet.push(startEl);
+let element = startEl.children;
 
-    for (var i = 0; i < startEl.children.length; i++) {
-      traverse(startEl.children[i]);
-    }
-  }
+if(matchFunc(startEl)){
+  resultSet.push(startEl);
+}
 
-  // Inicia la recursión desde el elemento de inicio
-  traverse(startEl);
+for (let i = 0; i < element.length; i++){
+  let result = traverseDomAndCollectElements(matchFunc, element[i])
+
+  resultSet = [...resultSet, ...result]
+}
 
   return resultSet;
 };
@@ -53,6 +54,7 @@ var matchFunctionMaker = function (selector) {
       return element.classList.contains(selector.substring(1));  
   } else if (selectorType === "tag.class") {
       if(element.tagName && element.tagName.toLowerCase() === selector.split(".")[0].toLowerCase() && element.classList.contains(selector.split(".")[1])){
+        //esto se podria haber hecho con recursion, en vez de copiar todo de nuevo. (habria que agregarle el . a la clase antes de pasarlo de nuevo porque sino no lo va a tomar como clase)
         return true;
       } else {
         return false;
