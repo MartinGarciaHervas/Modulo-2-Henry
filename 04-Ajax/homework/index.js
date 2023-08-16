@@ -28,6 +28,7 @@ $("#delete").on("click", function () {
         url: "http://localhost:5000/amigos/" + inputDelete.value,
           success: (data) => {
             console.log(data);
+            console.log("pepe");
 
               let info = document.createElement("p");
               info.textContent = `Tu amigo borrado fue borrado con exito`;
