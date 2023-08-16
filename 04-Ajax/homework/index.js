@@ -1,4 +1,3 @@
-
 $("#boton").on("click", function () {
 $.get("http://localhost:5000/amigos", (data) => { 
 
@@ -37,3 +36,24 @@ $("#delete").on("click", function () {
         }
     })
 })
+
+$("#agregar").on("click", function() {
+$.post( "http://localhost:5000/amigos", { name: "John", time: "2pm" } )
+})
+
+
+
+// $("#agregar").on("click", function() {
+//   $.ajax({
+//     type: "POST",
+//     url: "http://localhost:5000/amigos",
+//     data: {
+//       name: $("#nombre").val(),
+//       apellido: $("#apellido").val(),
+//       email: $("#mail").val()
+//         },
+//     success: (data) => {
+//       console.log(data);
+//     }
+//   });
+// })
