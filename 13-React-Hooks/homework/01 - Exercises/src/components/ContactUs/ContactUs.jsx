@@ -1,18 +1,54 @@
 import React from "react";
+import { useDispatch } from 'react-redux'
+import {enviarForm} from '../../redux/actions/actions'
+
+
+// Debería invocarse el hook dispatch para poder despachar la action 'enviarFormulario'
 
 const ContactUs = () => {
+
+  const dispatch = useDispatch();
+  
+  const [form, setForm] = React.useState({
+    nombre: "",
+    email: "",
+    asunto: "",
+    mensaje: "",
+  })
+
+  function submitHandler(){
+    dispatch(enviarForm(form));
+    setForm({
+      nombre: "",
+      email: "",
+      asunto: "",
+      mensaje: "",
+    })
+  }
+
+
+  function inputHandler(event) {
+    setForm({
+      nombre: event,
+      email: event,
+      asunto: event,
+      mensaje: event,
+    })
+  }
+
+
   return (
     <div>
-      <form className="contactBg">
+      <form onSubmit={submitHandler} className="contactBg">
         <label htmlFor="nombre">Nombre: </label>
-        <input name="nombre" />
+        <input onChange={inputHandler} name="nombre" />
         <label htmlFor="email">Email: </label>
-        <input name="email" />
+        <input onChange={inputHandler} name="email" />
         <label htmlFor="asunto">Asunto: </label>
-        <input name="asunto" />
+        <input onChange={inputHandler} name="asunto" />
         <label htmlFor="mensaje">Mensaje: </label>
-        <input name="mensaje" />
-        <button>Enviar</button>
+        <input onChange={inputHandler} name="mensaje" />
+        <button type="submit" >Enviar</button>
       </form>
     </div>
   );
