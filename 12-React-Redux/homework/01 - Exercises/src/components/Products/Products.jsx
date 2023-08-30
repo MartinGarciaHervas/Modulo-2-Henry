@@ -18,7 +18,7 @@ export function Products(props) {
             <h1 className='productsTl'>{props.storeName}</h1>
 
             <div className='productsList'>
-               {(props.list)?.map(product=> 
+               {(props.list).map(product=> 
                <Card name= {product.name} price= {product.price} id= {product.id} key= {product.id} /> )}
             </div>
          </div>
